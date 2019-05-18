@@ -1,3 +1,5 @@
+
+
 <?php get_header(); ?>
 
 <?php get_template_part('content', 'menu'); ?>
@@ -11,6 +13,7 @@
     </section>
 
     <section class="container-fluid main-contents">
+
       <div class="row">
         <div class="col">
 

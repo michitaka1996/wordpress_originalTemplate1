@@ -1,9 +1,4 @@
-//ver3 panel ->
-//ver4　card
 
-//brakpointi
-
-//bootstrapのmixinは用意されている
 
 
 
@@ -150,8 +145,7 @@ img {
 
 .hero {
     width: 100%;
-    height: 570px;
-    background-image: url('./images/img1.jpg');
+    // background-image: url('./images/img1.jpg');
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -162,13 +156,17 @@ img {
     opacity: 0.7;
     position: relative;
 
+    #top-baner {
+        width: 100%;
+    }
+
     &-title {
         border: 2px solid;
         width: 20%;
         height: 120px;
         position: absolute;
         top: 15%;
-        right: 0;
+        right: 1%;
         display: flex;
         align-items: center;
 
@@ -188,7 +186,7 @@ img {
         // height: 95%;
         // border: 1px solid;
         position: absolute;
-        top: -240px;
+        top: -500px;
         background: #f6f5f4;
         box-sizing: border-box;
         padding: 30px 40px;
@@ -214,7 +212,7 @@ img {
     .middle-content {
         overflow: hidden;
         position: absolute;
-        top: -240px;
+        top: -500px;
         right: 2px;
 
         &-info,

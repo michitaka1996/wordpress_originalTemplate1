@@ -10,10 +10,12 @@ Template Name: TOP ~トップページ~
     <!-- メニュー -->
    <?php get_template_part('content', 'menu'); ?>
 
-   
+   <!-- メインコンテンツ -->
     <main>
       <!-- gridレイアウト　container-fulidかcontainer -->
+
       <section class=" hero container-fluid">
+      <img src="<?php echo get_post_meta($post->ID, 'img-top', true); ?>" id="top-baner">
         <div class="hero-title">
           <h2>Wordpress　Template</h2>
         </div>
@@ -41,29 +43,29 @@ Template Name: TOP ~トップページ~
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col"><?php echo get_post_meta($post->ID, 'recruit_info1', true); ?></th>
+                        <th scope="col"><?php echo get_post_meta($post->ID, 'recruit_info2', true); ?></th>
+                        <th scope="col"><?php echo get_post_meta($post->ID, 'recruit_info3', true); ?></th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
                         <th scope="row">1</th>
-                        <td>業務内容</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <td><?php echo get_post_meta($post->ID, 'recruit_info4', true); ?></td>
+                        <td><?php echo get_post_meta($post->ID, 'recruit_info5', true); ?></td>
+                        <td><?php echo get_post_meta($post->ID, 'recruit_info6', true); ?></td>
                       </tr>
                       <tr>
                         <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
+                        <td><?php echo get_post_meta($post->ID, 'recruit_info7', true); ?></td>
+                        <td><?php echo get_post_meta($post->ID, 'recruit_info8', true); ?></td>
+                        <td><?php echo get_post_meta($post->ID, 'recruit_info9', true); ?></td>
                       </tr>
                       <tr>
                         <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
+                        <td><?php echo get_post_meta($post->ID, 'recruit_info10', true); ?></td>
+                        <td><?php echo get_post_meta($post->ID, 'recruit_info11', true); ?></td>
+                        <td><?php echo get_post_meta($post->ID, 'recruit_info12', true); ?></td>
                       </tr>
                     </tbody>
                   </table>

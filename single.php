@@ -13,6 +13,7 @@
     </section>
 
     <section class="container-fluid main-contents">
+        <img src="<?php echo get_post_meta($post->ID, 'img-top', true); ?>" id="top-baner">
         <div class="row">
             <div class="col">
 
