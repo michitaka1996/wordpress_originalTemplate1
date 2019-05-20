@@ -11,7 +11,7 @@ Template Name: CONTACT ~お問い合わせ~
 
 <main>
   <section class=" hero container-fluid">
-          <img src="<?php echo get_post_meta($post->ID, 'img-top', true); ?>" id="top-baner">
+    <img src="<?php echo get_post_meta($post->ID, 'img-top', true); ?>" id="top-baner">
     <div class="hero-title">
       <h2>Wordpress　Template</h2>
     </div>

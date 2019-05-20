@@ -190,3 +190,101 @@ function save_custom_postdata($post_id)
         delete_post_meta($post_id, 'img-top', get_post_meta($post_id, 'img-top', true));
     }
 }
+
+
+
+
+
+//================================
+//カスタムヴィジェット -->これはpanelのヴィジェット(今回は使わない)
+//================================
+//ヴィジェットエリアを作成する関数はどれか
+add_action('widgets_init', 'my_widgets_area');
+//ヴィジェット自体を作成する関数はどれか
+add_action('widgets_init', create_function('', 'return register_widget("my_widgets_item1");'));
+
+//ヴィジェットエリアを作成する
+function my_widgets_area(){
+    register_sidebar(array(
+        //パネル
+        //idと　ヴィジェットエリアをなにで囲むか
+        'name'=>'メリットエリア',
+        'id'=>'widget_merit',
+        'before_widget'=>'<div>',
+        'after_widget'=>'</div>'
+    ));
+    register_sidebar(array(
+        //ブログのサイドバー
+        'name'=>'right_sidebar',
+        'id'=>'my_sidebar',
+        'before_widget'=>'<div>',
+        'after_widget'=>'</div>',
+        'before_title'=>'<h2>',
+        'after_title'=>'</h2>'
+    ));
+}
+
+
+
+//ヴィジェット自体を作成する
+class my_widgets_item1 extends WP_widget{
+    //初期化
+    function my_widgets_item1(){
+        parent::WP_Widget(false, $name = 'メリットヴィジェット');
+    }
+
+    //ヴィジェットの入力項目を作成する処理
+    function form($instance){
+        //サニタイズ ヴィジェットから入力された情報 hTMLのタグを閉じる
+        $title = esc_attr($instance['title']);
+        $body = esc_attr($instance['body']);
+    ?>
+        <p>
+         <label for="<?php echo $this->get_field_id('title'); ?>">
+            <?php echo 'タイトル'; ?>
+         </label>
+         <!--このname属性とfor属性を同じにすること -->
+         <input class="widefat" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title') ?>" type="text"
+          value="<?php echo $title; ?>">
+        </p>
+        <p>
+         <label for="<?php echo $this->get_field_id('body'); ?>">
+            <?php echo '内容'; ?>
+         </label>
+         <textarea class="widget" rows="16" cols="20" id="<?php echo $this->get_field_id('body'); ?>" name="<?php echo $this->get_field_name('body'); ?>"><?php echo $body; ?></textarea>
+        </p>
+    <?php 
+    }
+
+    //ヴィジェットに入力された情報を保存する処理
+    function update($new_instance, $old_instance){
+        $instance = $old_instance;
+        $instance['title'] = strip_tags($new_instance['title']); //サニタイズ
+        $instance['body'] = trim($new_instance['body']);  //trim　は前後の空白を削除　文章の一部にリンクをつけたりできる
+
+        return $instance;
+    }
+
+    //管理画面から入力されたヴィジェットを(HTMLの形式で)画面に表示する処理　//パネルのような形式で表示させる
+    function widget($args, $instance){
+        //配列を変数に展開　引数名を変数に格納
+        extract($args);
+        //ヴィジェットから入力した情報を取得
+         //apply_filtersはwpでの処理を挟んで、DBに保存する
+        $title = apply_filters('widget_title', $instance['title']);
+        $body = apply_filters('widget_body', $instance['body']);
+
+        //ヴィジェットを出力 ヴィジェットから入力された情報がある場合、htmlを表示する
+        if($title){
+    ?>
+        <section class="panel">
+            <h2><?php echo $title; ?></h2>
+            <p>
+               <?php echo $body; ?> 
+            </p>
+        </section>
+    <?php 
+        }
+    }
+}
+?>

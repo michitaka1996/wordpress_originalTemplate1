@@ -7127,7 +7127,7 @@ img {
   .main-content .middle-content {
     width: 95%;
     position: absolute;
-    top: -500px;
+    top: -400px;
     background: #f6f5f4;
     box-sizing: border-box;
     padding: 30px 40px;
@@ -7147,7 +7147,7 @@ img {
   .main-content-contact .middle-content {
     overflow: hidden;
     position: absolute;
-    top: -500px;
+    top: -400px;
     right: 2px;
     background: #f6f5f4;
     width: 100%;
@@ -7159,6 +7159,10 @@ img {
     .main-content-contact .middle-content-info,
     .main-content-contact .middle-content-contact {
       right: 60px; }
+    .main-content-blog .middle-content-blog,
+    .main-content-info .middle-content-blog,
+    .main-content-contact .middle-content-blog {
+      top: 80px; }
   .main-content-blog .content-title-blog,
   .main-content-info .content-title-blog,
   .main-content-contact .content-title-blog {
